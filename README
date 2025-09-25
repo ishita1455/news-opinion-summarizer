@@ -1,45 +1,55 @@
-````markdown
+Here’s a **clean, GitHub-ready version** of your README, rewritten for clarity, consistent formatting, and ready to render without showing Markdown syntax as code:
+
+---
+
 # 📰 News Opinion & Editorial Summarizer
 
 ## 📌 Overview
-This project implements a **fully automated pipeline** to process English newspaper PDFs. It:
 
-1. Identifies pages containing **Opinion / Editorial / Views** sections.  
-2. Extracts only those pages.  
-3. Merges them into a **single consolidated PDF**.  
-4. Generates **summaries** of the extracted content using Groq LLM.  
-5. Runs seamlessly on **Windows and Linux** with minimal human intervention.  
+This project provides a **fully automated pipeline** to process English newspaper PDFs. It:
+
+1. Identifies pages containing **Opinion / Editorial / Views** sections.
+2. Extracts only those relevant pages.
+3. Merges them into a **single consolidated PDF**.
+4. Generates **summaries** of the extracted content using the Groq LLM.
+5. Runs seamlessly on **Windows and Linux** with minimal human intervention.
 
 ---
 
 ## ✨ Features
-- ✅ Automated extraction of editorial/opinion pages.  
-- ✅ **OCR fallback** for scanned PDFs using Tesseract.  
-- ✅ **Header-based detection**: detects “Editorial”, “Opinion”, “Views”, “Letters”.  
-- ✅ **Merged PDF output**: all relevant pages in one file.  
-- ✅ **Summarization with Groq API** for concise insights.  
-- ✅ Works cross-platform (Windows/Linux).  
-- ✅ Detailed **logging** of processed files and extracted pages.  
+
+* ✅ Automated extraction of editorial/opinion pages.
+* ✅ **OCR fallback** for scanned PDFs using Tesseract.
+* ✅ **Header-based detection**: identifies “Editorial”, “Opinion”, “Views”, “Letters”.
+* ✅ **Merged PDF output**: combines all relevant pages into one file.
+* ✅ **Summarization with Groq API** for concise insights.
+* ✅ Works cross-platform (Windows/Linux).
+* ✅ Detailed **logging** of processed files and extracted pages.
 
 ---
 
 ## ⚙️ Setup
 
 ### Prerequisites
-- Python 3.10+  
-- [Poppler](https://github.com/oschwartz10612/poppler-windows) (for `pdf2image`)  
-- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract)  
+
+* Python 3.10+
+* [Poppler](https://github.com/oschwartz10612/poppler-windows) (for `pdf2image`)
+* [Tesseract OCR](https://github.com/tesseract-ocr/tesseract)
 
 ### Installation
+
 ```bash
 git clone https://github.com/ishita1455/news-opinion-summarizer.git
 cd news-opinion-summarizer
 python -m venv .venv
-source .venv/bin/activate   # Linux / macOS
-.venv\Scripts\activate      # Windows
+# Activate virtual environment:
+# Linux / macOS
+source .venv/bin/activate
+# Windows
+.venv\Scripts\activate
 
 pip install -r requirements.txt
-````
+```
 
 ### Set Groq API Key
 
@@ -58,14 +68,15 @@ $env:GROQ_API_KEY="your_api_key_here"
 1. Place input newspaper PDFs in the **`input_pdfs/`** folder.
 2. Run the pipeline:
 
-   ```bash
-   python summarizer.py
-   ```
+```bash
+python summarizer.py
+```
+
 3. Outputs will be saved in the **`final/`** folder:
 
-   * `opinion_editorials.pdf` → merged editorial pages
-   * `summaries.txt` → plain text summaries
-   * `summaries.md` → markdown summaries
+* `opinion_editorials.pdf` → merged editorial pages
+* `summaries.txt` → plain text summaries
+* `summaries.md` → markdown summaries
 
 ---
 
@@ -85,7 +96,7 @@ news-opinion-summarizer/
 
 ## 🛠 Example Run
 
-```bash
+```
 Processing: The Hindu HD-19.pdf
    -> Added page 10 (Editorial)
    -> Added page 11 (Opinion)
@@ -101,8 +112,12 @@ Processing: Tribune_TheTribune_19-09-2025.pdf
 
 ## 🎯 Key Highlights
 
-* End-to-end automation of extraction + summarization.
-* Handles **both text-based and scanned PDFs**.
-* Produces **clean, professional outputs** for quick review.
+* End-to-end automation of extraction + summarization
+* Supports **both text-based and scanned PDFs**
+* Produces **clean, professional outputs** for quick review
 
+---
 
+If you want, I can also **add badges, links, and a cleaner Table of Contents** to make it look even more professional on GitHub.
+
+Do you want me to do that next?
