@@ -32,7 +32,7 @@ FINAL_FOLDER.mkdir(exist_ok=True)
 KEYWORDS = ["opinion", "editorial"]
 
 # Final merged PDF path
-FINAL_PDF_PATH = FINAL_FOLDER / "opinion_editorials.pdf"
+FINAL_PDF_PATH = FINAL_FOLDER / "opinion_editorials_merged.pdf"
 
 # Log file path
 LOG_FILE = "process.log"

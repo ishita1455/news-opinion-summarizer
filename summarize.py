@@ -58,7 +58,7 @@ for pdf_path in input_folder.glob("*.pdf"):
 # ---------------------------
 # Save merged Opinion/Editorial PDF
 # ---------------------------
-final_pdf = final_folder / "opinion_editorials.pdf"
+final_pdf = final_folder / "opinion_editorials_merged.pdf"
 with open(final_pdf, "wb") as f:
     pdf_writer.write(f)
 logging.info(f"📄 Merged PDF saved at: {final_pdf}")
