@@ -1,4 +1,4 @@
-Here’s a **clean, GitHub-ready version** of your README, rewritten for clarity, consistent formatting, and ready to render without showing Markdown syntax as code:
+Here’s a **ready-to-copy, GitHub-ready Markdown version** of your README. Copy it **exactly as is** into a file named `README.md`—do **not** wrap it in any triple backticks or code blocks. Headings, lists, and formatting will render correctly on GitHub.
 
 ---
 
@@ -8,23 +8,23 @@ Here’s a **clean, GitHub-ready version** of your README, rewritten for clarity
 
 This project provides a **fully automated pipeline** to process English newspaper PDFs. It:
 
-1. Identifies pages containing **Opinion / Editorial / Views** sections.
-2. Extracts only those relevant pages.
-3. Merges them into a **single consolidated PDF**.
-4. Generates **summaries** of the extracted content using the Groq LLM.
-5. Runs seamlessly on **Windows and Linux** with minimal human intervention.
+1. Identifies pages containing **Opinion / Editorial / Views** sections
+2. Extracts only those relevant pages
+3. Merges them into a **single consolidated PDF**
+4. Generates **summaries** of the extracted content using the Groq LLM
+5. Runs seamlessly on **Windows and Linux** with minimal human intervention
 
 ---
 
 ## ✨ Features
 
-* ✅ Automated extraction of editorial/opinion pages.
-* ✅ **OCR fallback** for scanned PDFs using Tesseract.
-* ✅ **Header-based detection**: identifies “Editorial”, “Opinion”, “Views”, “Letters”.
-* ✅ **Merged PDF output**: combines all relevant pages into one file.
-* ✅ **Summarization with Groq API** for concise insights.
-* ✅ Works cross-platform (Windows/Linux).
-* ✅ Detailed **logging** of processed files and extracted pages.
+* ✅ Automated extraction of editorial/opinion pages
+* ✅ **OCR fallback** for scanned PDFs using Tesseract
+* ✅ **Header-based detection**: identifies “Editorial”, “Opinion”, “Views”, “Letters”
+* ✅ **Merged PDF output**: combines all relevant pages into one file
+* ✅ **Summarization with Groq API** for concise insights
+* ✅ Works cross-platform (Windows/Linux)
+* ✅ Detailed **logging** of processed files and extracted pages
 
 ---
 
@@ -38,16 +38,26 @@ This project provides a **fully automated pipeline** to process English newspape
 
 ### Installation
 
+1. Clone the repository:
+
 ```bash
 git clone https://github.com/ishita1455/news-opinion-summarizer.git
 cd news-opinion-summarizer
+```
+
+2. Create and activate a virtual environment:
+
+```bash
 python -m venv .venv
-# Activate virtual environment:
 # Linux / macOS
 source .venv/bin/activate
 # Windows
 .venv\Scripts\activate
+```
 
+3. Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
@@ -65,7 +75,7 @@ $env:GROQ_API_KEY="your_api_key_here"
 
 ## 🚀 Usage
 
-1. Place input newspaper PDFs in the **`input_pdfs/`** folder.
+1. Place input newspaper PDFs in the **`input_pdfs/`** folder
 2. Run the pipeline:
 
 ```bash
@@ -118,6 +128,8 @@ Processing: Tribune_TheTribune_19-09-2025.pdf
 
 ---
 
-If you want, I can also **add badges, links, and a cleaner Table of Contents** to make it look even more professional on GitHub.
+This version is **ready to paste into GitHub** as `README.md`. All headings (`#`), lists, and formatting will render correctly.
 
-Do you want me to do that next?
+If you want, I can also create a **version with badges, a clickable Table of Contents, and cleaner visuals** for an even more professional GitHub README.
+
+Do you want me to do that?
