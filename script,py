@@ -1,0 +1,113 @@
+"""
+PDF Opinion & Editorial Extractor
+---------------------------------
+This script scans through PDFs in the `input_pdfs` folder, extracts text
+(including OCR for scanned pages), and collects pages containing
+specific keywords (e.g., "opinion", "editorial"). The matching pages
+are merged into a single PDF saved in the `final` folder.
+
+A log of the process is also saved in `process.log`.
+"""
+
+import logging
+from pathlib import Path
+from PyPDF2 import PdfReader, PdfWriter
+import pytesseract
+from pdf2image import convert_from_path
+
+# -------------------------------------------------------------------
+# Configuration
+# -------------------------------------------------------------------
+
+# Define input and output folders
+INPUT_FOLDER = Path("input_pdfs")
+OUTPUT_FOLDER = Path("output")
+FINAL_FOLDER = Path("final")
+
+# Ensure folders exist
+OUTPUT_FOLDER.mkdir(exist_ok=True)
+FINAL_FOLDER.mkdir(exist_ok=True)
+
+# Keywords to search for in text
+KEYWORDS = ["opinion", "editorial"]
+
+# Final merged PDF path
+FINAL_PDF_PATH = FINAL_FOLDER / "opinion_editorials.pdf"
+
+# Log file path
+LOG_FILE = "process.log"
+
+# -------------------------------------------------------------------
+# Logging Setup
+# -------------------------------------------------------------------
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE, mode="w", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
+
+# -------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------
+
+def extract_text_from_page(reader: PdfReader, pdf_path: Path, page_number: int) -> str:
+    """
+    Extracts text from a given page of a PDF.
+    Falls back to OCR if the page contains no extractable text.
+    """
+    page = reader.pages[page_number]
+    text = page.extract_text() or ""
+
+    if not text.strip():
+        logging.debug(f"Page {page_number+1} in {pdf_path.name} is scanned. Running OCR...")
+        images = convert_from_path(
+            str(pdf_path),
+            first_page=page_number + 1,
+            last_page=page_number + 1
+        )
+        text = pytesseract.image_to_string(images[0])
+
+    return text
+
+
+def contains_keywords(text: str, keywords: list[str]) -> bool:
+    """Check if the text contains any of the specified keywords."""
+    return any(keyword.lower() in text.lower() for keyword in keywords)
+
+
+def process_pdfs():
+    """
+    Process all PDFs in the input folder, extract pages containing keywords,
+    and merge them into a final PDF.
+    """
+    pdf_writer = PdfWriter()
+    total_added = 0
+
+    for pdf_path in INPUT_FOLDER.glob("*.pdf"):
+        logging.info(f"Processing: {pdf_path.name}")
+        reader = PdfReader(str(pdf_path))
+
+        for i in range(len(reader.pages)):
+            text = extract_text_from_page(reader, pdf_path, i)
+
+            if contains_keywords(text, KEYWORDS):
+                pdf_writer.add_page(reader.pages[i])
+                total_added += 1
+                logging.info(f"  -> Added page {i+1} from {pdf_path.name}")
+
+    if total_added > 0:
+        with open(FINAL_PDF_PATH, "wb") as f:
+            pdf_writer.write(f)
+        logging.info(f"✅ Merged PDF saved at: {FINAL_PDF_PATH}")
+    else:
+        logging.warning("⚠️ No pages matched the given keywords. No PDF created.")
+
+# -------------------------------------------------------------------
+# Entry Point
+# -------------------------------------------------------------------
+if __name__ == "__main__":
+    process_pdfs()
