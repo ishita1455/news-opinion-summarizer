@@ -1,42 +1,47 @@
-# 📰 Newspaper Opinion/Editorial Extraction & Summarization Pipeline
+📰 Newspaper Opinion/Editorial Extraction & Summarization Pipeline
+📌 Overview
 
-## 📌 Overview
+This project implements a fully automated pipeline to process multiple English newspapers in PDF format. It:
 
-This project implements a **fully automated pipeline** to process multiple English newspapers in PDF format. It:
+Identifies pages containing Opinion / Editorial sections.
 
-1. Identifies pages containing **Opinion / Editorial sections**.
-2. Extracts only those pages.
-3. Merges extracted pages into a **single consolidated PDF**.
-4. Generates **summaries** of the extracted content using an LLM (Groq).
-5. Runs seamlessly on **Windows and Linux** with minimal human intervention.
+Extracts only those pages.
 
-This pipeline is designed for **efficiency, automation, and professional reporting** of editorial content.
+Merges extracted pages into a single consolidated PDF.
 
----
+Generates summaries of the extracted content using an LLM (Groq).
 
-## ✨ Features
+Runs seamlessly on Windows and Linux with minimal human intervention.
 
-* **Automated page extraction**: Uses PyPDF2 to extract relevant pages.
-* **OCR fallback**: Handles scanned PDFs using Tesseract via `pytesseract`.
-* **Keyword & header-based detection**: Finds *Opinion*, *Editorial*, *Views*, and related sections.
-* **Merged PDF output**: Consolidates all relevant opinion/editorial pages into one file.
-* **LLM summarization**: Generates concise summaries with Groq API.
-* **Cross-platform compatibility**: Tested on Windows & Linux.
-* **Robust logging**: Tracks processed files, extracted pages, and errors.
+This pipeline is designed for efficiency, automation, and professional reporting of editorial content.
 
----
+✨ Features
 
-## ⚙️ Setup
+Automated page extraction: Uses PyPDF2 to extract relevant pages.
 
-### Prerequisites
+OCR fallback: Handles scanned PDFs using Tesseract via pytesseract.
 
-* Python 3.10+
-* [Poppler](https://github.com/oschwartz10612/poppler-windows) (for `pdf2image`)
-* [Tesseract OCR](https://github.com/tesseract-ocr/tesseract)
+Keyword & header-based detection: Finds Opinion, Editorial, Views, and related sections.
 
-### Installation
+Merged PDF output: Consolidates all relevant opinion/editorial pages into one file.
 
-```bash
+LLM summarization: Generates concise summaries with Groq API.
+
+Cross-platform compatibility: Tested on Windows & Linux.
+
+Robust logging: Tracks processed files, extracted pages, and errors.
+
+⚙️ Setup
+Prerequisites
+
+Python 3.10+
+
+Poppler
+ (for pdf2image)
+
+Tesseract OCR
+
+Installation
 git clone https://github.com/ishita1455/news-opinion-summarizer.git
 cd news-opinion-summarizer
 python -m venv .venv
@@ -44,49 +49,37 @@ source .venv/bin/activate   # Linux / macOS
 .venv\Scripts\activate      # Windows
 
 pip install -r requirements.txt
-```
 
-### Set Groq API Key
-
-```bash
+Set Groq API Key
 export GROQ_API_KEY="your_api_key_here"   # Linux / macOS
 $env:GROQ_API_KEY="your_api_key_here"     # Windows PowerShell
-```
 
----
+🚀 Usage
 
-## 🚀 Usage
+Place all input newspaper PDFs inside the input_pdfs/ folder.
 
-1. Place all input newspaper PDFs inside the **`input_pdfs/`** folder.
-2. Run the pipeline:
+Run the pipeline:
 
-   ```bash
-   python summarizer.py
-   ```
-3. Outputs:
+python summarizer.py
 
-   * **final/opinion_editorials.pdf** → merged editorial pages
-   * **final/summaries.txt** → plain text summaries
-   * **final/summaries.md** → markdown summaries
 
----
+Outputs:
 
-## 🛠 Example Workflow
+final/opinion_editorials.pdf → merged editorial pages
 
-```bash
+final/summaries.txt → plain text summaries
+
+final/summaries.md → markdown summaries
+
+🛠 Example Workflow
 Processing: The Hindu HD-19.pdf  
    -> Added page 10 (Editorial)  
    -> Added page 11 (Opinion)  
 📄 Merged PDF saved at: final/opinion_editorials.pdf  
 📝 Summaries saved at: final/summaries.txt  
 📘 Markdown summaries saved at: final/summaries.md  
-```
 
----
-
-## 📂 Project Structure
-
-```
+📂 Project Structure
 news-opinion-summarizer/
 │── input_pdfs/              # Place input newspapers here
 │── output/                  # Temporary files
@@ -94,13 +87,10 @@ news-opinion-summarizer/
 │── summarizer.py            # Main pipeline
 │── requirements.txt         # Python dependencies
 │── README.md                # Project documentation
-```
 
----
+🎯 Key Highlights
+1. Automated end-to-end extraction and summarization.
 
-## 🎯 Key Highlights
+2. Works with both text-based and scanned PDFs.
 
-* Automated end-to-end extraction and summarization.
-* Works with both **text-based and scanned PDFs**.
-* Provides **quick insights** from lengthy newspapers.
-
+3. Provides quick insights from lengthy newspapers.
