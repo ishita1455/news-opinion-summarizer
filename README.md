@@ -1,7 +1,3 @@
-Here’s a **ready-to-copy, GitHub-ready Markdown version** of your README. Copy it **exactly as is** into a file named `README.md`—do **not** wrap it in any triple backticks or code blocks. Headings, lists, and formatting will render correctly on GitHub.
-
----
-
 # 📰 News Opinion & Editorial Summarizer
 
 ## 📌 Overview
@@ -126,10 +122,3 @@ Processing: Tribune_TheTribune_19-09-2025.pdf
 * Supports **both text-based and scanned PDFs**
 * Produces **clean, professional outputs** for quick review
 
----
-
-This version is **ready to paste into GitHub** as `README.md`. All headings (`#`), lists, and formatting will render correctly.
-
-If you want, I can also create a **version with badges, a clickable Table of Contents, and cleaner visuals** for an even more professional GitHub README.
-
-Do you want me to do that?
